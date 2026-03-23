@@ -1,25 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MiniErp.MultiTenant.Entities;
+﻿using MiniErp.MultiTenant.Entities;
 
-
-namespace MiniErp.MultiTenant.Controllers
+namespace MiniErp.MultiTenant.Services
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ProductsController : ControllerBase
+    public class ProductService
     {
-        [HttpGet]
-        public IActionResult GetAll()
+        public List<Product> GetAll()
         {
             var products = new List<Product>()
-            {
+            { 
                 new Product
                 {
                     Id = 1,
                     Name = "Laptop",
                     Price = 25000m
-                }
-                ,
+                },
                 new Product
                 {
                     Id = 2,
@@ -27,8 +21,8 @@ namespace MiniErp.MultiTenant.Controllers
                     Price = 500m
                 }
             };
-
-            return Ok(products);
+            return products;
         }
+
     }
 }
