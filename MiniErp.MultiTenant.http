@@ -1,0 +1,6 @@
+@MiniErp.MultiTenant_HostAddress = http://localhost:5076
+
+GET {{MiniErp.MultiTenant_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
