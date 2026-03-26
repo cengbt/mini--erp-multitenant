@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MiniErp.MultiTenant.Services;
-
+using MiniErp.MultiTenant.Dtos;
 
 namespace MiniErp.MultiTenant.Controllers
 {
@@ -19,5 +19,13 @@ namespace MiniErp.MultiTenant.Controllers
         {
             return Ok(_productService.GetAll());
         }
+        
+        [HttpPost]
+        public IActionResult Create(CreateProductRequestDto request)
+        {
+            var createdProduct = _productService.Create(request);
+            return Ok(createdProduct);
+        }
+
     }
 }
