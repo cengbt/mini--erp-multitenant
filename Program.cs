@@ -1,5 +1,7 @@
-
 using MiniErp.MultiTenant.Services;
+using Microsoft.EntityFrameworkCore;
+using MiniErp.MultiTenant.Data;
+
 
 namespace MiniErp.MultiTenant
 {
@@ -13,6 +15,9 @@ namespace MiniErp.MultiTenant
 
             builder.Services.AddControllers();
             builder.Services.AddScoped<ProductService>();
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+            
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

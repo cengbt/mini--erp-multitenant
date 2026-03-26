@@ -1,27 +1,20 @@
 ﻿using MiniErp.MultiTenant.Entities;
+using MiniErp.MultiTenant.Data;
 
 namespace MiniErp.MultiTenant.Services
 {
     public class ProductService
     {
+        private readonly ApplicationDbContext _context;
+
+        public ProductService(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         public List<Product> GetAll()
         {
-            var products = new List<Product>()
-            { 
-                new Product
-                {
-                    Id = 1,
-                    Name = "Laptop",
-                    Price = 25000m
-                },
-                new Product
-                {
-                    Id = 2,
-                    Name = "Mouse",
-                    Price = 500m
-                }
-            };
-            return products;
+            return _context.Products.ToList();
         }
 
     }
