@@ -17,6 +17,11 @@ namespace MiniErp.MultiTenant.Services
         {
             return _context.Products.ToList();
         }
+
+        public Product? GetById(int id)
+        {
+            return _context.Products.FirstOrDefault(x => x.Id == id);
+        }
         public Product Create(CreateProductRequestDto request)
         {
             var product = new Product()

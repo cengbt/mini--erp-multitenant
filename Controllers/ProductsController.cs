@@ -19,6 +19,19 @@ namespace MiniErp.MultiTenant.Controllers
         {
             return Ok(_productService.GetAll());
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var product = _productService.GetById(id);
+            
+            if(product is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(product);
+        }
         
         [HttpPost]
         public IActionResult Create(CreateProductRequestDto request)
